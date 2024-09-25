@@ -17,7 +17,8 @@ sudo docker pull aquasec/trivy
 ### 2️⃣ trivy로 nginx 이미지 취약점 스캔하고, 분석 결과 저장하기
 
 ```bash
-docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx --format json > /home/username/trivy/nginx_scan_results.json
+docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx --format json \
+    > /home/username/trivy/nginx_scan_results.json
 ```
 
 ![화면 캡처 2024-09-25 114953](https://github.com/user-attachments/assets/0f2b5cd4-90d0-45bf-a515-f67b3e99d928)
