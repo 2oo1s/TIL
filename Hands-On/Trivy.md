@@ -1,23 +1,23 @@
 ## 📌실습 내용
 
-- trivy를 사용하여 컨테이너 이미지를 분석하고, 분석 결과를 메일로 받아보기
+- Trivy를 사용하여 컨테이너 이미지를 분석하고, 분석 결과를 메일로 받아보기
 
 ## 💡실습 목표
 
-- Docker에 trivy를 설치한 후, nginx 컨테이너 이미지를 분석하고 심각도에 따른 취약점 확인하기
-- 분석 결과를 텍스트 파일로 저장 후, smtp를 통해 메일로 전송하기
+- Docker에 Trivy를 설치한 후, nginx 컨테이너 이미지를 분석하고 심각도에 따른 취약점 확인하기
+- 분석 결과를 텍스트 파일로 저장 후, SMTP를 통해 메일로 전송하기
 
 - crontab으로 매일 오전 10시에 분석 취약 결과 정보 받을 수 있도록 설정하기
 
 ## 🧾실습 과정
 
-### 1️⃣ Docker에 trivy 설치하기
+### 1️⃣ Docker에 Trivy 설치하기
 
 ```bash
 sudo docker pull aquasec/trivy
 ```
 
-### 2️⃣ trivy로 nginx 이미지 스캔하고 실행 후, 텍스트 파일로 결과 저장
+### 2️⃣ Trivy로 nginx 이미지 스캔하고 실행 후, 텍스트 파일로 결과 저장
 
 ```bash
 docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx \
@@ -28,7 +28,7 @@ docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx \
 
   ![화면 캡처 2024-09-25 152848](https://github.com/user-attachments/assets/2c7b43b1-7689-4bc3-91ad-0c1b3e455f4a)
 
-### 3️⃣ 메일 전송을 위한 smtp 설정하기
+### 3️⃣ 메일 전송을 위한 SMTP 설정하기
 
 - 설정 파일을 열어주기
 
