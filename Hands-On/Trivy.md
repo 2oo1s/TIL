@@ -113,7 +113,7 @@ docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx \
   # 열린 설정 파일에 아래 코드 추가
   # 0 10 * * * /bin/bash /home/username/trivy_scan.sh
 
-  # 테스트를 할 때는 정상 작동하는지 3분마다 오게 설정
+  # 테스트를 할 때는 정상 작동하는지 1분마다 오게 설정
   */1 * * * * /bin/bash /home/username/trivy_scan.sh
   ```
 
