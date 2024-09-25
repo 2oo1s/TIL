@@ -1,11 +1,10 @@
 ## 📌실습 내용
 
-- trivy를 사용하여 컨테이너 이미지 분석하고, 분석 결과를 메일로 전송하기
+- trivy를 사용하여 컨테이너 이미지 분석하고, 분석 결과를 메일로 받아보기
 
 ## 💡실습 목표
 
 - Docker에 trivy를 설치한 후, nginx 컨테이너 이미지를 분석하고 심각도에 따른 취약점 확인하기
-  
 - 분석 결과를 텍스트 파일로 저장 후, smtp를 통해 메일로 전송하기
 
 - crontab으로 매일 오전 10시에 분석 취약 결과 정보 받을 수 있도록 설정하기
@@ -106,4 +105,24 @@ docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx \
 
 ### 5️⃣ Crontab으로 매일 오전 10시에 자동으로 메일 전송 설정하기
 
-### 6️⃣
+- crontab 설정 코드 작성
+
+  ```bash
+  crontab -e
+
+  # 열린 설정 파일에 아래 코드 추가
+  # 0 10 * * * /bin/bash /home/username/trivy_scan.sh
+
+  # 테스트를 할 때는 정상 작동하는지 3분마다 오게 설정
+  */3 * * * * /bin/bash /home/username/trivy_scan.sh
+  ```
+
+- crontab 설정 확인
+
+  ```bash
+  crontab -l
+  ```
+
+  <img src="https://github.com/user-attachments/assets/43a184ba-60ae-48db-a5d0-79ecfe5b5f45" alt="IMG_1199" width="400"/>
+
+### 6️⃣ 메일 확인하기
