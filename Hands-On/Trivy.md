@@ -114,7 +114,7 @@ docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx \
   # 0 10 * * * /bin/bash /home/username/trivy_scan.sh
 
   # 테스트를 할 때는 정상 작동하는지 3분마다 오게 설정
-  */3 * * * * /bin/bash /home/username/trivy_scan.sh
+  */1 * * * * /bin/bash /home/username/trivy_scan.sh
   ```
 
 - crontab 설정 확인
@@ -123,6 +123,10 @@ docker run --rm -v /home/username/trivy:/root/.cache aquasec/trivy image nginx \
   crontab -l
   ```
 
-  <img src="https://github.com/user-attachments/assets/43a184ba-60ae-48db-a5d0-79ecfe5b5f45" alt="IMG_1199" width="400"/>
+  <img src="https://github.com/user-attachments/assets/8fb0ec86-c8da-4aab-9fb6-c03d5c00863e" alt="IMG_1199" width="400"/>
 
 ### 6️⃣ 메일 확인하기
+
+- 1분마다 정상적으로 전송됨
+
+    <img src="https://github.com/user-attachments/assets/3dc0a321-b30a-484f-9279-67de85c8274f" alt="IMG_1199" width="400"/>
