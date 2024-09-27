@@ -59,9 +59,6 @@ MySQL 데이터베이스에서 테이블을 덤프하여 다른 컨테이너 내
   DUMP_STORE_DIR="/home/username/step06Compose/dumpData"
   TABLE_DUMP_DIR="/tmp" # 컨테이너 내 덤프 파일을 저장할 디렉토리
   
-  # 덤프 저장 디렉토리 생성
-  mkdir -p $DUMP_STORE_DIR
-  
   # 현재 테이블 목록 저장
   docker exec mysqldb mysql -u $MYSQL_USER -p"$MYSQL_PASS" -e "SHOW TABLES IN $SOURCE_DB_NAME;" \
       >/tmp/current_tables.txt
