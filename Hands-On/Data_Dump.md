@@ -15,7 +15,8 @@ MySQL 데이터베이스에서 테이블을 덤프하여 다른 컨테이너 내
 - `SHOW TABLES` 명령어를 사용하여 `fisa` 데이터베이스의 테이블 목록을 `/tmp/current_tables.txt`에 저장
 
   ```bash
-  docker exec mysqldb mysql -u $MYSQL_USER -p"$MYSQL_PASS" -e "SHOW TABLES IN $SOURCE_DB_NAME;" > /tmp/current_tables.txt
+  docker exec mysqldb mysql -u $MYSQL_USER -p "$MYSQL_PASS" -e \
+              "SHOW TABLES IN $SOURCE_DB_NAME;" > /tmp/current_tables.txt
   ```
 
 ### 2️⃣ 테이블 덤프 및 복사
@@ -35,7 +36,7 @@ MySQL 데이터베이스에서 테이블을 덤프하여 다른 컨테이너 내
         docker exec newmysqldb sh -c "mysql -u $MYSQL_USER -p'$MYSQL_PASS'\
                                     $TARGET_DB_NAME < $TABLE_DUMP_DIR/$TABLE.sql"
     fi
-  done < /tmp/current_tables.txt
+  done <$TABLE_DUMP_DIR/current_tables.txt
   ```
 
 ### 3️⃣ 데이터베이스 생성 확인
@@ -43,7 +44,8 @@ MySQL 데이터베이스에서 테이블을 덤프하여 다른 컨테이너 내
 - `newmysqldb` 컨테이너에서 `fisa` 데이터베이스가 존재하는지 확인하고, 없을 경우 생성
 
   ```bash
-  docker exec newmysqldb mysql -u $MYSQL_USER -p"$MYSQL_PASS" -e "CREATE DATABASE IF NOT EXISTS $TARGET_DB_NAME;"
+  docker exec newmysqldb mysql -u $MYSQL_USER -p "$MYSQL_PASS" -e \
+              "CREATE DATABASE IF NOT EXISTS $TARGET_DB_NAME;"
   ```
 
 ### 4️⃣ 자동화 파일 전체 코드
@@ -84,7 +86,7 @@ MySQL 데이터베이스에서 테이블을 덤프하여 다른 컨테이너 내
           docker exec newmysqldb sh -c "mysql -u $MYSQL_USER -p'$MYSQL_PASS' \
   $TARGET_DB_NAME < $TABLE_DUMP_DIR/$TABLE.sql"
   
-          # 로컬 백업 파일 삭제 (선택적)
+          # 로컬 백업 파일 삭제
           # rm $DUMP_STORE_DIR/$TABLE.sql
       fi
   done <$TABLE_DUMP_DIR/current_tables.txt
@@ -92,13 +94,13 @@ MySQL 데이터베이스에서 테이블을 덤프하여 다른 컨테이너 내
 
 ### 5️⃣ 크론탭 설정
 
-- 스크립트를 일주일에 한 번 월요일 오전 9시에 자동으로 실행하기 위한 크롭탭 설정
+- 스크립트를 매주 월요일 오전 9시에 자동으로 실행하기 위한 크롭탭 설정
 
   ```bash
   crontab -e
 
   # 아래 명령어 추가
-  0 3 * * 1 /home/username/step06Compose/data_dump.sh
+  0 9 * * 1 /home/username/step06Compose/dumpData/data_dump.sh
   ```
 
 위와 같이 설정하면 매주 월요일 오전 9시에 해당 스크립트가 실행되어 자동으로 데이터베이스가 백업됨
