@@ -1,15 +1,15 @@
-# 🔮Kubernetes 환경에서 다중 인스턴스를 배포하여 로드밸런싱하기
+# 🔮 Kubernetes 환경에서 다중 인스턴스를 배포하여 로드밸런싱하기
 
 - Spring Boot 애플리케이션의 Jar 파일을 Docker 이미지로 생성하고, Kubernetes 환경에서 배포 및 로드밸런싱 실습
 - Minikube를 활용해 Kubernetes 클러스터를 설정하고, 애플리케이션을 로드밸런서 서비스로 배포
 
-## 💡실습 목표
+## 💡 실습 목표
 
 - Spring Boot 애플리케이션을 Docker 컨테이너 이미지로 생성하는 방법 복습
 - Docker 이미지를 Kubernetes 클러스터에 배포하고, 트래픽을 분산 처리하는 방법을 이해
 - Minikube를 활용해 로컬 Kubernetes 환경에서 애플리케이션을 운영하는 기본 절차 익히기
 
-## 🧾실습 과정
+## 🧾 실습 과정
 
 ### 1️⃣ Dockerfile 작성
 
