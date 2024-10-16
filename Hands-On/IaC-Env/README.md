@@ -27,15 +27,23 @@
 ### 2️⃣ S3 버킷의 Public Access Block 설정
 
 - 버킷의 공개 접근을 허용하는 설정을 추가하여, HTML 파일이 공용으로 접근 가능하도록 설정하기
+- `etag` 값을 사용하여 S3 객체의 변경을 감지
+  - 파일이 수정될 때마다 etag 값이 변경되어, Terraform이 이를 감지하여 업데이트가 필요함을 알 수 있음
 
   ```hcl
-  resource "aws_s3_bucket_public_access_block" "bucket1_public_access_block" {
-    bucket = aws_s3_bucket.bucket1.id
+  resource "aws_s3_object" "index" {
+    bucket        = aws_s3_bucket.bucket1.id 
+    key           = "index.html"
+    source        = "index.html"
+    content_type  = "text/html"
+    etag          = filemd5("index.html")
+  }
   
-    block_public_acls       = false
-    block_public_policy     = false
-    ignore_public_acls      = false
-    restrict_public_buckets = false
+  resource "aws_s3_object" "main" {
+    bucket        = aws_s3_bucket.bucket1.id 
+    key           = "main.html"
+    source        = "main.html"
+    content_type  = "text/html"
   }
   ```
 
