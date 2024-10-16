@@ -61,7 +61,7 @@ resource "aws_s3_object" "main" {
 
 ```hcl
 resource "aws_s3_bucket_website_configuration" "xweb_bucket_website" {
-  bucket = aws_s3_bucket.bucket1.id  # 생성된 S3 버킷 이름 사용
+  bucket = aws_s3_bucket.bucket1.id
 
   index_document {
     suffix = "index.html"
@@ -75,7 +75,7 @@ resource "aws_s3_bucket_website_configuration" "xweb_bucket_website" {
 
 ```hcl
 resource "aws_s3_bucket_policy" "public_read_access" {
-  bucket = aws_s3_bucket.bucket1.id  # 생성된 S3 버킷 이름 사용
+  bucket = aws_s3_bucket.bucket1.id
 
   policy = <<EOF
 {
