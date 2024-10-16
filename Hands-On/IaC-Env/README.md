@@ -114,4 +114,4 @@
 
 - index.html을 변경했을 때, 아래 사진과 같이 변경사항이 반영되어 수정시간이 main.html과 다른 것을 확인할 수 있음
 
-![image](https://github.com/user-attachments/assets/a80a5875-5571-4d35-bcb4-aa6aa64ee166)
+  ![image](https://github.com/user-attachments/assets/a80a5875-5571-4d35-bcb4-aa6aa64ee166)
