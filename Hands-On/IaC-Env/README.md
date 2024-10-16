@@ -41,14 +41,14 @@ resource "aws_s3_bucket_public_access_block" "bucket1_public_access_block" {
 
 ```hcl
 resource "aws_s3_object" "index" {
-  bucket        = aws_s3_bucket.bucket1.id  # 생성된 S3 버킷 이름 사용
+  bucket        = aws_s3_bucket.bucket1.id 
   key           = "index.html"
   source        = "index.html"
   content_type  = "text/html"
 }
 
 resource "aws_s3_object" "main" {
-  bucket        = aws_s3_bucket.bucket1.id  # 생성된 S3 버킷 이름 사용
+  bucket        = aws_s3_bucket.bucket1.id 
   key           = "main.html"
   source        = "main.html"
   content_type  = "text/html"
